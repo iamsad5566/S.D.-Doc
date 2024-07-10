@@ -79,13 +79,12 @@ The Sustainable Diet Platform is designed to promote sustainable eating habits t
 ## Mail Service
 
 - Description: Handles password reset functionality for forgotten passwords.
-- Technologies: Go, PostgreSQL, gRPC.
+- Technologies: Go, PostgreSQL.
 - Components:
 
     - Mail Database Component: Stores email-related information in PostgreSQL.
     - Password Reset Component: Manages the password reset process.
     - Email Sending Component: Responsible for sending password reset emails.
-    - gRPC Interface Component: Communicates with the RBAC Member Management Service.
     - Request Handling Component: Processes incoming requests from the frontend.
 
 ## Security
