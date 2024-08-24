@@ -1,0 +1,11 @@
+graph TD
+    MA[Mobile App] -->|Requests| RH[Request Handling Component]
+    RH -->|Recipe operations| RM[Recipe Management Component]
+    RH -->|Comment operations| CM[Comment Management Component]
+    RH -->|Member verification| MV[Member Verification Component]
+    RM -->|Stores/retrieves recipes| RDB[Recipe Database Component]
+    CM -->|Stores/retrieves comments| CDB[Comment Database Component]
+    MV -->|Verifies member| GRPC[gRPC Interface Component]
+    RDB -->|Stores recipes| MDB[(MongoDB)]
+    CDB -->|Stores comments| PG[(PostgreSQL)]
+    GRPC -->|Communicates with| RBAC[RBAC-Member Service]

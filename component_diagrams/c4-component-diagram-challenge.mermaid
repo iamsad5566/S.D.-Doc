@@ -1,0 +1,10 @@
+graph TD
+    MA[Mobile App] -->|Requests| RH[Request Handling Component]
+    RH -->|Challenge operations| CM[Challenge Management Component]
+    RH -->|Achievement operations| AM[Achievement Component]
+    RH -->|Member verification| MV[Member Verification Component]
+    CM -->|Stores/retrieves challenges| CDB[Challenge Database Component]
+    AM -->|Stores/retrieves achievements| CDB
+    MV -->|Verifies member| GRPC[gRPC Interface Component]
+    CDB -->|Stores data| PG[(PostgreSQL)]
+    GRPC -->|Communicates with| RBAC[RBAC-Member Service]

@@ -1,0 +1,7 @@
+graph TD
+    MA[Mobile App] -->|Requests| RH[Request Handling Component]
+    RH -->|Geocoding requests| GC[Geocoding Component]
+    RH -->|GPS conversion requests| GCC[GPS to City/County Conversion Component]
+    GC -->|Geographic data| OSMDB[OSM Database Component]
+    GCC -->|Geographic data| OSMDB
+    OSMDB -->|Stores/retrieves data| PG[(PostgreSQL OSM)]
