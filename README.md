@@ -11,7 +11,7 @@ The Sustainable Diet Platform is designed to promote sustainable eating habits t
 - Description: Interface for backend maintenance and administrative tasks.
 - Technologies: Next.js (for web development).
 
-## RBAC Member Management Service
+## RBAC-Member Service
 
 - Description: Handles all member-related functionalities, including authentication, authorization, and session management.
 - Technologies: Go, PostgreSQL, Redis, gRPC.
@@ -24,51 +24,62 @@ The Sustainable Diet Platform is designed to promote sustainable eating habits t
     - gRPC Interface Component: Communicates with other services to verify token validity.
     - Request Handling Component: Processes incoming requests from the frontend.
 
-## Knowledge Content Service
+## Knowledge Service
 
 - Description: Provides monthly themes related to flowers and solar terms, knowledge about agricultural products and crops from various counties, and recipe information.
-- Technologies: Go, MongoDB, gRPC.
+- Technologies: Go, MongoDB.
 - Components:
 
     - Content Database Component: Stores knowledge content in MongoDB.
     - Content Delivery Component: Delivers content to users.
-    - Member Verification Component: Verifies member access to specific content.
-    - gRPC Interface Component: Communicates with the RBAC Member Management Service.
     - Request Handling Component: Processes incoming requests from the frontend.
 
-## Discussion Forum Service
+## Recipe Service
 
-- Description: Manages discussion content for the platform's forums.
+- Description: Manages recipe content and discussions.
 - Technologies: Go, MongoDB, PostgreSQL, gRPC.
 - Components:
 
-    - Discussion Database Component: Stores forum discussions in MongoDB.
+    - Recipe Database Component: Stores recipes in MongoDB.
     - Comment Management Component: Manages comments using PostgreSQL.
-    - Forum Management Component: Manages forum content and interactions.
-    - Member Verification Component: Verifies member access to forum content.
-    - gRPC Interface Component: Communicates with the RBAC Member Management Service.
+    - Recipe Management Component: Manages recipe content and interactions.
+    - Member Verification Component: Verifies member access to recipe content.
+    - gRPC Interface Component: Communicates with the RBAC-Member Service.
     - Request Handling Component: Processes incoming requests from the frontend.
 
-## Activity and News Service
-
-- Description: Updates activities and pushes new information to users. Includes a push notification system using WebSocket and NATS.
-- Technologies: Go, MongoDB, gRPC, WebSocket, NATS.
+## Notification Service
+- Description: Handles push notifications to users.
+- Technologies: Go, MongoDB, FCM, NATS.
 - Components:
 
-    - Activity Database Component: Stores activity and news information in MongoDB.
-    - News Delivery Component: Manages the delivery of news updates to users.
-    - Member Verification Component: Verifies member access to specific news content.
-    - gRPC Interface Component: Communicates with the RBAC Member Management Service.
+    - FCM Component: Responsible for sending push notifications.
+    - NATS Component: Receives push notification messages.
+    - MongoDB Component: Stores news information and FCM tokens.
+    - Request Handling Component: Processes incoming requests and messages.
+
+## Challenge Service
+- Description: Manages monthly challenges, exploration tasks, member achievements, and badges.
+- Technologies: Go, PostgreSQL, gRPC.
+- Components:
+
+    - Challenge Database Component: Stores challenge and task information.
+    - Achievement Component: Manages member achievements and badges.
+    - gRPC Interface Component: Communicates with the RBAC-Member Service for verification.
     - Request Handling Component: Processes incoming requests from the frontend.
-    - WebSocket Component: Manages real-time communication with the frontend.
-    - NATS Component: Handles message publishing and subscribing for push notifications.
-    - Crawler/Scraper Component: Automatically or manually fetches data from external sources.
-    - RESTful API Component: Provides endpoints for communication with other services.
+
+## Broadcaster
+- Description: A daemon service for web scraping and scheduled tasks.
+- Technologies: Go, Colly, NATS.
+- Components:
+
+    - Web Scraping Component: Uses Colly to scrape news websites.
+    - Scheduled Task Component: Checks for new months and solar terms.
+    - NATS Publishing Component: Sends messages to NATS for Notification Service processing.
 
 ## Geographic Information Service
 
 - Description: Converts GPS coordinates to location information (city/county).
-- Technologies: Go, PostgreSQL (OSM), gRPC.
+- Technologies: Go, PostgreSQL (OSM).
 - Components:
 
     - OSM Database Component: Manages geographic information using a self-hosted PostgreSQL (OSM) database.
