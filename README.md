@@ -1,5 +1,9 @@
-# Overview (Progression: 95% - Integration testing)
+# Overview
 The Sustainable Diet Platform is designed to promote sustainable eating habits through a mobile application. The platform provides various services, including member management, knowledge content, discussion forums, activities and news updates, geographic information services, and email services. Each service is built as a microservice to ensure scalability, flexibility, and ease of maintenance.
+
+ios: https://apps.apple.com/tw/app/節食/id6504645032?l=en-GB&platform=iphone
+android: under release procedure
+
 ## System Architecture
 ## Mobile App
 
